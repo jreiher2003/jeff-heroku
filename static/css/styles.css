@@ -5,7 +5,7 @@
 	border: 2px solid rgba(0,0,0,1);
 }
 span.small {
-	font-size: .35em; 
+	font-size: .25em; 
 	text-transform: uppercase; 
 	margin-left: 1.2em; 
 } 
@@ -20,40 +20,7 @@ hr.style-eight {
     text-align: center;
 }
 hr.style-eight:before {
-    /*content: url('/static/images/images_dest/jwblack21-16_icon.svg');*/
-    content: url('/static/images/jwblack21-16_icon.png');
-    display: inline-block;
-    position: relative;
-    top: -.9em;
-    font-size: 2em;
-    padding: 0.25em 0.25em;
-    background-color: rgba(245,245,245,1);
 }
-.button1, .button2 {
-	width: 100%;
-	padding: 25px 0;
-	text-align: center;
-	background-color: rgba(0,0,0,.8);   
-}
-.call, .text  {
-    display: inline-block;
-	width: 200px;
-    padding: 10px;
-	margin: auto;
-    border-radius: 2%;
-    text-align: center;
-    margin-top: 5px;
-	font-size: 16px;
-	text-transform: uppercase;
-}
-
-a.call:hover, a.call:active  {
-	color: rgba(255,255,255,1);
-}
- .button2 a:hover, .button2 a.active {
- 	color: rgba(255,255,255,1);
- }
-
  .info1, .info2 {
 	width: 100%;
 	height: auto;
@@ -148,4 +115,33 @@ figure {
 }
 figcaption {
 	color: rgba(175,175,175,1);
+}
+.nav-call {
+	margin: 10px;
+}
+.nav-call li {
+	margin-right: 5px;
+}
+
+@media screen and (min-width: 991px) {
+	body {
+		width: 1120px;
+		margin: 0 auto;
+	}
+	hr {
+		display: none;
+	}
+	footer {
+		padding: 40px 0 20px 0;
+	}
+	ul.social {
+		width: 50%;
+		float: right;
+		margin-right: 20px;
+		border-top: 2px solid rgba(175,175,175,1);
+	}
+	.bottom-footer {
+		width: 50%;
+	}
+
 }
