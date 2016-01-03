@@ -35,44 +35,23 @@ hr.style-eight:before {
 	text-align: center;
 	background-color: rgba(0,0,0,.8);   
 }
-.button1 a, .button2 a {
+.call, .text  {
     display: inline-block;
 	width: 200px;
-	/*height: 40px;*/
     padding: 10px;
 	margin: auto;
     border-radius: 2%;
     text-align: center;
-    outline: none;
-    text-decoration: none;
-    transition: background-color 0.1s ease-out,
-    			color 0.1s ease-out;
+    margin-top: 5px;
 	font-size: 16px;
 	text-transform: uppercase;
 }
-.button1 a {
-	color: rgba(0,255,54,1);
-    border: 3px solid rgba(0,255,54,1);
-}
-.button2 a {
-	color: rgba(255,200,0,1);
-    border: 3px solid rgba(255,200,0,1);
-}
-.button1 a:hover,.button1 a:active  {
+
+a.call:hover, a.call:active  {
 	color: rgba(255,255,255,1);
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	background-color: rgba(0,255,54,.9); /* fallback */
-    border-color: rgba(0,255,54,.9); /* fallback */
-	transition: background-color 0.1s ease-in,
-				color 0.1s ease-in;
 }
  .button2 a:hover, .button2 a.active {
  	color: rgba(255,255,255,1);
- 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	background-color: rgba(255,200,0,.9); /* fallback */
-    border-color: rgba(255,200,0,.9); /* fallback */
-	transition: background-color 0.1s ease-in,
-				color 0.1s ease-in;
  }
 
  .info1, .info2 {
