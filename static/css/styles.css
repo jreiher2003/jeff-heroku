@@ -1,3 +1,6 @@
+html {
+	background-color: #e9eaed;
+}
 .jcarousel ul li img {
 	display: block;
 	margin-left: auto;
@@ -126,13 +129,17 @@ figcaption {
 @media screen and (min-width: 991px) {
 	body {
 		width: 1120px;
-		margin: 0 auto;
+		margin: auto;
 	}
 	hr {
 		display: none;
 	}
+	.info1,.info2 {
+		padding: 50px 0;
+	}
 	footer {
 		padding: 40px 0 20px 0;
+		margin: 0;
 	}
 	ul.social {
 		width: 50%;
