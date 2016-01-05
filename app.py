@@ -57,7 +57,7 @@ def login():
 def logout():
     session.pop('logged_in', None)
     flash('You were logged out.')
-    return redirect(url_for('welcome'))
+    return redirect(url_for('index'))
 
 # start the server with the 'run()' method
 if __name__ == '__main__':
