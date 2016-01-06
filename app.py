@@ -9,11 +9,12 @@ import sqlite3
 app = Flask(__name__)
 
 # config
-import os
-app.config.from_object(os.environ['APP_SETTINGS'])
-print os.environ['APP_SETTINGS']
-
-
+# import os
+# app.config.from_object(os.environ['APP_SETTINGS'])
+# print os.environ['APP_SETTINGS']
+app.secret_key = "secret"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 # create the sqlalchemy object
 db = SQLAlchemy(app)
 
@@ -54,7 +55,7 @@ def login():
 def logout():
     session.pop('logged_in', None)
     flash('You were logged out.')
-    return redirect(url_for('index'))
+    return redirect(url_for('blog'))
 
 
 
