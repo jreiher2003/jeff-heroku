@@ -4,4 +4,4 @@ venv
 blog
 *.db
 commands.txt
-secret_key.py
+#secret_key.py
