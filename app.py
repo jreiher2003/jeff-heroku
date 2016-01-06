@@ -10,11 +10,9 @@ app = Flask(__name__)
 
 # config
 # import os
-# app.config.from_object(os.environ['APP_SETTINGS'])
-# print os.environ['APP_SETTINGS']
-app.secret_key = "secret"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+import os
+app.config.from_object(os.environ['APP_SETTINGS'])
+print os.environ['APP_SETTINGS']
 # create the sqlalchemy object
 db = SQLAlchemy(app)
 
