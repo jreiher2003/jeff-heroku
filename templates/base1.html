@@ -51,7 +51,9 @@
             </ul>
 
             <ul class="list-unstyled nav-call">
-              <li class="pull-right hidden-xs"><a href="/login">Login</a></li>
+              <li class="pull-right hidden-xs"><a href="/logout">Logout</a></li>
+
+              <li class="pull-right hidden-xs"><a href="/login">Login&nbsp;|</a></li>
               <li class="pull-right hidden-xs"><a class="btn btn-success btn-sm" href="tel:+1-941-585-3084"><i class="fa fa-phone"></i>
                 &nbsp;&nbsp;Call Me</a></li>
               <li class="pull-right hidden-xs"><a class="btn btn-warning btn-sm" href="sms:+1-941-585-3084"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;Text Me</a></li>
@@ -60,6 +62,15 @@
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid nav -->
       </nav>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul class='flashes'>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
       {%block section %}{% endblock %}
 
 
