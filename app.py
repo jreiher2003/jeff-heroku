@@ -12,10 +12,6 @@ app = Flask(__name__)
 import os
 app.config.from_object(os.environ['APP_SETTINGS'])
 
-# config
-# app.secret_key = 'my precious'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS '] = True
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
 
 # create the sqlalchemy object
 db = SQLAlchemy(app)
@@ -58,6 +54,8 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out.')
     return redirect(url_for('index'))
+
+
 
 # start the server with the 'run()' method
 if __name__ == '__main__':
