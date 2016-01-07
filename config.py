@@ -1,5 +1,4 @@
 import os
-# from secret_key import secret_key
 import secret_key
 
 # default config
