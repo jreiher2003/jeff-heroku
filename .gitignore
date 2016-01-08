@@ -5,3 +5,4 @@ blog
 *.db
 commands.txt
 #secret_key.py
+*.bat
