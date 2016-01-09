@@ -12,7 +12,7 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 print os.environ['APP_SETTINGS']
 db = SQLAlchemy(app)
 
-from models import User
+from models import *
 
 # login_manager.login_view = 'login'
 
