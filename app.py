@@ -2,11 +2,14 @@
 from flask import Flask, render_template, redirect, \
     url_for, request, session, flash
 from functools import wraps
+from forms import LoginForm
 from flask.ext.sqlalchemy import SQLAlchemy
-import sqlite3
+from flask.ext.bcrypt import Bcrypt 
+# import sqlite3
 
 # create the application object
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 # config
 import os
@@ -36,16 +39,18 @@ def project():
 # route for handling the login page logic
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
+    mistake = None
+    form = LoginForm(request.form)
     if request.method == 'POST':
-        if (request.form['username'] != 'admin') \
-                or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
+        if form.validate_on_submit():
+            user = User.query.filter_by(name=request.form['username']).first()
+            if user is not None and bcrypt.check_password_hash(user.password, request.form['password']):
+                session['logged_in'] = True
+                flash('You were logged in. Go Crazy')
+                return redirect(url_for('blog'))
         else:
-            session['logged_in'] = True
-            flash('You were logged in.')
-            return redirect(url_for('blog'))
-    return render_template('login.html', error=error)	
+            mistake = 'Invalid Credentials. Please try again.'
+    return render_template('login.html', mistake=mistake, form=form)	
 
 
 @app.route('/logout')
