@@ -1,31 +1,14 @@
 # import the Flask class from the flask module
-from flask import Flask, render_template, redirect, \
-    url_for, request, session, flash
-from functools import wraps
+from flask import render_template, redirect, url_for, request, session, flash
 from forms import LoginForm
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.bcrypt import Bcrypt 
-# import sqlite3
+from project import app
 
-# create the application object
-app = Flask(__name__)
-bcrypt = Bcrypt(app)
-
-# config
-import os
-app.config.from_object(os.environ['APP_SETTINGS'])
-print os.environ['APP_SETTINGS']
-
-# create the sqlalchemy object
-db = SQLAlchemy(app)
-
-# import db schema
-from models import *
 
 @app.route('/')
 @app.route('/home')
 def index():
     return render_template('index.html')
+
 
 @app.route('/blog')
 def blog():
