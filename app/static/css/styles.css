@@ -1,0 +1,154 @@
+html {
+	background-color: #e9eaed;
+}
+.jcarousel ul li img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid rgba(0,0,0,1);
+}
+span.small {
+	font-size: .25em; 
+	text-transform: uppercase; 
+	margin-left: 1.2em; 
+} 
+hr {
+	width: 100%;
+}
+hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: 12px double rgba(51,51,51,1);
+    color: #333;
+    text-align: center;
+}
+hr.style-eight:before {
+}
+ .info1, .info2 {
+	width: 100%;
+	height: auto;
+	background-color: rgba(255,255,255,1);
+	border-top: 1px solid;
+}
+.info1 h4, .info2 h4 {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.8em
+}
+.info1 ul, .info2 ul {
+	line-height: 1.5;
+	font-size: 1.5;
+	padding-left: 0;
+}
+.info1 ul li, .info2 ul li {
+	list-style-type: none;
+	padding-top: 4px;
+	font-size: 1.3em;
+}
+.info1 ul li:before, .info2 ul li:before {
+	content: "\27A2";
+	padding-right: 8px;
+}
+footer {
+	width: 100%;
+	height: auto;
+	background-color: rgba(0,0,0,1);
+}
+footer ul li: {
+	list-style: none;
+	padding: 0;
+}
+ul.social {
+	font-family: FontAwesome;
+	font-size: 1em;
+	width: 100%;
+	text-align: center;
+	padding: 20px 0 20px 0;
+	margin: 10px 0 10px 0;
+	border-bottom: 2px solid rgba(175,175,175,1);
+}
+ul.social li {
+	display: inline-block;
+	position: relative;
+	width: auto;
+	height: auto;
+	line-height: 20px;
+	padding-left: 25px;
+	font-size: 1.3em;
+	color: rgba(175,175,175,1);
+}
+.social li a {
+	position: relative;
+	color: rgba(175,175,175,1);
+	display: block;
+	width: auto;
+	text-decoration: none;
+}
+.social li a:hover {
+	color: rgba(255,255,255,1);
+}
+.git:before {
+	content: '\f09b';
+	padding-right: 10px;
+}
+.linkedin:before {
+	content: '\f0e1';
+	padding-right: 10px;
+}
+.twitter:before {
+	content: '\f099';
+	padding-right: 10px;
+}
+.facebook:before {
+	content: '\f082';
+	padding-right: 10px;
+}
+.bottom-footer {
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+}
+img.foot {
+	width: 200px;
+	display: block;
+	margin: 0 auto;
+}
+figure {
+	margin-bottom: 10px;	
+}
+figcaption {
+	color: rgba(175,175,175,1);
+}
+.nav-call {
+	margin: 10px;
+}
+.nav-call li {
+	margin-right: 5px;
+}
+
+@media screen and (min-width: 991px) {
+	body {
+		width: 1120px;
+		margin: auto;
+	}
+	hr {
+		display: none;
+	}
+	.info1,.info2 {
+		padding: 50px 0;
+	}
+	footer {
+		padding: 40px 0 20px 0;
+		margin: 0;
+	}
+	ul.social {
+		width: 50%;
+		float: right;
+		margin-right: 20px;
+		border-top: 2px solid rgba(175,175,175,1);
+	}
+	.bottom-footer {
+		width: 50%;
+	}
+
+}
