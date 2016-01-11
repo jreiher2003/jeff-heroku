@@ -1,7 +1,6 @@
 from app import *
 from flask import render_template, redirect, \
     url_for, request, session, flash
-from functools import wraps
 from forms import LoginForm
 
 from models import *
@@ -44,8 +43,3 @@ def logout():
     flash('You were logged out.')
     return redirect(url_for('blog'))
 
-
-
-# start the server with the 'run()' method
-if __name__ == '__main__':
-    app.run()
