@@ -23,7 +23,7 @@ def blog():
             flash('New Post was successfully posted.', 'bg-success')
             return redirect(url_for('blog'))
     else:
-    	posts = db.session.query(BlogPost).all()
+    	posts = db.session.query(BlogPost).order_by(BlogPost.id.desc())
     	return render_template('blog.html', posts=posts, form=form, error=error)
 
 @app.route('/projects')

@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="blog__head">
-			<h1 class="text-center">Welcome to Jeff's Tech Blog!</h1>
+			<h1 class="text-center">Welcome to Jeff's Tech Microblog!</h1>
 		</div>
 	</div>
 </div>
@@ -23,62 +23,70 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-1">
 
-{% if current_user.is_active %}
-<!-- User posts -->
-<h2>Welcome, {{ current_user.name }}!</h2><br>
-<h3>Add a Post!</h3>
-<form class="form-message" role="form" method="post" action="/blog">
-  {{ form.csrf_token }}
+		{% if current_user.is_active %}
+		<!-- User posts -->
+		<h2>Welcome, {{ current_user.name }}!</h2><br>
+		<h3>Add a Post!</h3>
+		<form class="form-message" role="form" method="post" action="/blog">
+			{{ form.csrf_token }}
 
-  <div class="form-group">
-  	 <label for="title">Title</label>
-    {{ form.title(class="form-control", placeholder="title") }}
-  </div>
+			<div class="form-group">
+				<label for="title">Title</label>
+				{{ form.title(class="form-control", placeholder="title") }}
+			</div>
 
-    <span class="error bg-danger">
-      {% if form.title.errors %}
-        {% for error in form.title.errors %}
-          {{ error }}
-        {% endfor %}
-      {% endif %}
-    </span>
-  
-  <div class="form-group">
-  	 <label for="description">Description</label>
-  {{ form.description(class="form-control", rows="5", placeholder="description") }}
-	</div>
+			<span class="error bg-danger">
+				{% if form.title.errors %}
+					{% for error in form.title.errors %}
+						{{ error }}
+					{% endfor %}
+				{% endif %}
+			</span>
 
-    <span class="error bg-danger">
-      {% if form.description.errors %}
-        {% for error in form.description.errors %}
-          {{ error }}
-        {% endfor %}
-      {% endif %}
-    </span>
- 
-  <button class="btn btn-lg btn-success" type="submit">Post</button>
-</form>
-{% endif %}
+			<div class="form-group">
+				<label for="description">Description</label>
+				<pre> {{ form.description(class="form-control", rows="5", placeholder="description") }}</pre>
+			</div>
+
+			<span class="error bg-danger">
+				{% if form.description.errors %}
+					{% for error in form.description.errors %}
+						{{ error }}
+					{% endfor %}
+				{% endif %}
+			</span>
+
+			<button class="btn btn-lg btn-success" type="submit">Post</button>
+		</form>
+			{% endif %}
 
 
 <!-- <p>Click <a href="/logout">here</a> to logout.</p> -->
 <h3>Posts:</h3>
 {% for post in posts %}
-  <strong>Title:</strong> {{ post.title }} <br>
-  <strong>Post:</strong> {{ post.description }} <br>
-  <strong>Author:</strong> {{ post.author.name }} <br>
-  <br>
+<strong>Title:</strong> <h2 class="h2 text-capitalize"><a href="#">{{ post.title }}</a></h2> <br>
+<strong>Post:</strong> <pre>{{ post.description }}</pre> 
+<strong>Author:</strong> {{ post.author.name }} <br>
+<a href="#">Keep Reading</a><br><br>
+<br>
 {% endfor %}
 </div> <!-- end col -->
 
-	<div class="col-md-4">
-		<div class="blog__head__border recent__post">
-			<h3 class="text-center">Recent Posts:</h3>
-				{% for post in posts %}
-					<a href="#">{{ post.title }}</a><br><br>
-				{% endfor %}
-		</div>
+<div class="col-md-4 col-md-offset-1">
+	<div class="blog__head__border recent__post">
+		<h3 class="text-center">Recent Posts:</h3>
+		<ul class="recent__post__list">
+			{% for post in posts %}
+			<li class="text-capitalize"><a href="#">{{ post.title }}</a></li>
+			<br>
+			{% endfor %}
+			<li class="divider recent__post_hr"></li>
+			<!-- <hr class="recent__post_hr"/> -->
+
+			<li class="text-center"><a href="#">Back to Home Page</a></li>
+		</ul>
 	</div>
+</div>
 </div><!-- end row -->
 
 

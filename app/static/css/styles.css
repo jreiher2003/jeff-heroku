@@ -143,9 +143,29 @@ figcaption {
 	padding: 10px;
 }
 .recent__post {
-	background: #e9eaed;;
-	height: 300px;
+	background: rgba(245,245,245,.9);
+	height: auto;
 	width: 300px;
+	/*padding-left: 20px;*/
+	padding-right: 20px;
+}
+ul.recent__post__list {
+	list-style: none;
+}
+ul.recent__post__list li {
+	font-size: 18px;
+}
+ul.recent__post__list li:last-of-type {
+	margin-top: 10px;
+	font-size: 15px;
+}
+li.recent__post_hr {
+	padding: 0;
+    /*border: none;*/
+    border: 1px solid rgba(220,220,220,1);
+    /*border-top: 12px double rgba(220,220,220,1);*/
+    color: #333;
+    text-align: center;
 }
 
 @media screen and (min-width: 991px) {
