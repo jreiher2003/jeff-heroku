@@ -125,6 +125,28 @@ figcaption {
 .nav-call li {
 	margin-right: 5px;
 }
+.blog__head {
+	background-color: rgba(50,50,50,1);
+	border: 1px solid rgba(25,25,25,1);
+	padding: 40px;
+}
+.blog__head__border {
+	border: 1px solid rgba(220,220,220,1);
+	/*box-shadow: 1px 1px 1px rgba(220,220,220,1);*/
+}
+.blog__head h1 {
+	color: rgba(250,250,250,1);
+}
+.sub__blog__head {
+	margin-top: 30px;
+	background-color: rgba(245,245,245,.9);
+	padding: 10px;
+}
+.recent__post {
+	background: #e9eaed;;
+	height: 300px;
+	width: 300px;
+}
 
 @media screen and (min-width: 991px) {
 	body {

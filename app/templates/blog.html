@@ -4,17 +4,42 @@
 {% block keywords %}Jeff Reiher, Web developer, blogger, blog, costa rica, englewood florida, beach{% endblock %}
 {% block section %}
 
-<h1>Welcome to Jeff's Tech Blog!</h1>
-<br>
+<div class="row">
+	<div class="col-md-12">
+		<div class="blog__head">
+			<h1 class="text-center">Welcome to Jeff's Tech Blog!</h1>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="sub__blog__head blog__head__border">
+			<a href="#">Blog</a>
+		</div>
+	</div>
+
+</div>
 <!-- <p>Click <a href="/logout">here</a> to logout.</p> -->
 <br><br>
+<div class="row">
+	<div class="col-md-6 col-md-offset-1">
 <h3>Posts:</h3>
 {% for post in posts %}
   <strong>Title:</strong> {{ post.title }} <br>
   <strong>Post:</strong> {{ post.description }} <br>
   <strong>Author:</strong> {{ post.author.name }} <br>
-<br>
+  <br>
 {% endfor %}
+</div> <!-- end col -->
+	<div class="col-md-4">
+		<div class="blog__head__border recent__post">
+			<h3 class="text-center">Recent Posts:</h3>
+				{% for post in posts %}
+					<a href="#">{{ post.title }}</a><br><br>
+				{% endfor %}
+		</div>
+	</div>
+</div><!-- end row -->
 
 
 
