@@ -8,7 +8,7 @@ class BaseConfig(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     print SQLALCHEMY_DATABASE_URI
-    # SQLALCHEMY_DATABASE_URI = 'sqlite:///posts.db'
+   
 
 
 class DevelopmentConfig(BaseConfig):
