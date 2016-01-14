@@ -1,6 +1,7 @@
 from app import db, bcrypt
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
+# from slugify import slugify
 
 
 
@@ -48,6 +49,7 @@ class BlogPost(db.Model):
         self.title = title
         self.description = description
         self.author_id = author_id
+       
 
     def __repr__(self):
         return '<title> {}'.format(self.title)

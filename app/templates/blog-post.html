@@ -2,10 +2,13 @@
 
 {% block section %}
 
-
-<h1>Test page</h1>
+<a href="{{ url_for('editBlogPost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">edit</a>
+<a href="{{ url_for('deleteBlogPost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">delete</a>
+<!-- <h1>Test page</h1> -->
 {{ blogpost.id }}<br>
 {{ blogpost.title }}<br>
-{{ blogpost.description }}
+{{ blogpost.description }}<br>
+{{ blogpost.author_id }}
+{{ blogpost.slug }}
 
 {% endblock %}
