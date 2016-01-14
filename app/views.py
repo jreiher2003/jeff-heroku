@@ -4,7 +4,7 @@ from flask import render_template, redirect, \
 from flask.ext.login import login_user, logout_user, login_required, current_user
 from forms import LoginForm, MessageForm
 from app.models import User, BlogPost, bcrypt
-from slugify import slugify
+
 
 @app.route('/')
 @app.route('/home')
@@ -20,7 +20,6 @@ def blog():
 @app.route("/blog/<int:blog_id>/<path:blog_title>/")
 def blog_post(blog_id, blog_title):
     blogpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
-    blog_title = slugify(blog_title)
     return render_template('blog-post.html', blogpost=blogpost)
 
 
