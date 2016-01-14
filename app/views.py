@@ -26,6 +26,13 @@ def blog():
     	posts = db.session.query(BlogPost).order_by(BlogPost.id.desc())
     	return render_template('blog.html', posts=posts, form=form, error=error)
 
+
+@app.route("/blog/<int:blog_id>/<path:blog_title>")
+def blog_post(blog_id, blog_title):
+    blogpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
+    return render_template('blog-post.html', blogpost=blogpost)
+
+
 @app.route('/projects')
 def project():
 	return render_template('projects.html')
