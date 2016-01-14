@@ -3,7 +3,6 @@ from flask import render_template, redirect, \
     url_for, request, session, flash
 from flask.ext.login import login_user, logout_user, login_required, current_user
 from forms import LoginForm, MessageForm
-
 from app.models import User, BlogPost, bcrypt
 
 @app.route('/')
@@ -27,15 +26,26 @@ def blog():
     	return render_template('blog.html', posts=posts, form=form, error=error)
 
 
-@app.route("/blog/<int:blog_id>/<path:blog_title>")
+@app.route("/blog/<int:blog_id>/<path:blog_title>/")
 def blog_post(blog_id, blog_title):
     blogpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
     return render_template('blog-post.html', blogpost=blogpost)
 
+@app.route("/blog/newpost/<int:author_id>/")
+def newBlogPost(author_id):
+    newpost = db.session.query(User).filter_by(id=author_id).one()
+    return "page to create a new blog post, AUTHOR NAME:  %s" % newpost.name
 
-@app.route('/projects')
-def project():
-	return render_template('projects.html')
+
+@app.route("/blog/<int:author_id>/<int:blog_id>/edit/")
+def editBlogPost(author_id, blog_id):
+    editpost = db.session.query(BlogPost).filter_by(id=author_id).one()
+    return "page to edit a blog post: %s, %s" % (editpost.author_id, editpost.author.name)
+
+@app.route("/blog/<int:author_id>/<int:blog_id>/delete/")
+def deleteBlogPost(author_id, blog_id):
+    deletepost = db.session.query(BlogPost).filter_by(id=author_id).one()
+    return "page to delete blog post: %s, %s" % (deletepost.author_id, deletepost.author.name)
 
 # route for handling the login page logic
 @app.route('/login', methods=["GET", "POST"])
