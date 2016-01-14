@@ -3,9 +3,13 @@
 {% block section %}
 
 <a href="{{ url_for('editBlogPost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">edit</a>
+<br>
 <a href="{{ url_for('deleteBlogPost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">delete</a>
-<!-- <h1>Test page</h1> -->
-{{ blogpost.id }}<br>
+
+<h1>Test page</h1>
+{{ blogpost.id }} blog id<br>
+{{ blogpost.author_id }} author id<br>
+>>>>>>> fresh
 {{ blogpost.title }}<br>
 {{ blogpost.description }}<br>
 {{ blogpost.author_id }}

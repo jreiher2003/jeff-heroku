@@ -34,14 +34,14 @@ def newBlogPost(author_id):
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/edit/")
 def editBlogPost(author_id, blog_id):
-    editpost = db.session.query(BlogPost).filter_by(id=author_id).one()
-    return "page to edit a blog post: %s, %s" % (editpost.author_id, editpost.author.name)
+    editpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
+    return render_template('edit-post.html', editpost=editpost)
 
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/delete/")
 def deleteBlogPost(author_id, blog_id):
-    deletepost = db.session.query(BlogPost).filter_by(id=author_id).one()
-    return "page to delete blog post: %s, %s" % (deletepost.author_id, deletepost.author.name)
+    deletepost = db.session.query(BlogPost).filter_by(id=blog_id).one()
+    return render_template('delete-post.html',deletepost=deletepost)
 
 # route for handling the login page logic
 @app.route('/login', methods=["GET", "POST"])
