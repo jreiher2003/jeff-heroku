@@ -1,5 +1,5 @@
-from project import db
-from models import User
+from app import db
+from app.models import User
 
 db.create_all()
 # insert data
