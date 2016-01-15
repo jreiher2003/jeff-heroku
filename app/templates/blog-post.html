@@ -1,11 +1,11 @@
 {% extends "base1.html" %}
 
 {% block section %}
-
+{% if current_user.is_active %}
 <a href="{{ url_for('editBlogPost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">edit</a>
 <br>
 <a href="{{ url_for('deleteBlogPost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">delete</a>
-
+{% endif %}
 <h1>Test page</h1>
 {{ blogpost.id }} blog id<br>
 {{ blogpost.author_id }} author id<br>

@@ -44,13 +44,17 @@ class BlogPost(db.Model):
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     author_id = db.Column(db.Integer, ForeignKey('users.id'))
-    # title_slug = db.Column(db.String, nullable=False)
+   
 
     def __init__(self, title, description, author_id):
         self.title = title
         self.description = description
         self.author_id = author_id
-        # self.title_slug = slugify(title)
+        
+
+    @property 
+    def slug(self):
+        return slugify(self.title)
     
        
 
