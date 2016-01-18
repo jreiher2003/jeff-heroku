@@ -52,10 +52,10 @@ def login():
         user = User.query.filter_by(name=request.form['username']).first()
         if user is not None and bcrypt.check_password_hash(user.password, request.form['password']):
             login_user(user)
-            flash("You were logged in. Go Crazy.", 'bg-success')
+            flash("You were logged in. Go Crazy.", 'success')
             return redirect(url_for('index'))
         else:
-            flash("Try again", "bg-danger")
+            flash("Try again", "danger")
             return redirect(url_for('login'))
     return render_template("login.html", form=form, error=error)	
 
@@ -65,6 +65,6 @@ def login():
 def logout():
     logout_user()
     session.pop('logged_in', None)
-    flash('You were logged out.', 'bg-warning')
+    flash('You were logged out.', 'warning')
     return redirect(url_for('blog'))
 
