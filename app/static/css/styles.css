@@ -167,6 +167,16 @@ li.recent__post_hr {
     color: #333;
     text-align: center;
 }
+ul.flashes {
+	list-style: none;
+}
+ul.flashes li {
+	padding: 10px;
+}
+/*####### Login Form #############*/
+.login-form {
+	margin: 100px 0;
+}
 
 @media screen and (min-width: 991px) {
 	body {
