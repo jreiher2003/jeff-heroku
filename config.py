@@ -7,6 +7,7 @@ class BaseConfig(object):
     SECRET_KEY = secret_key.secret_key
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    POSTS_PER_PAGE = 10
     print SQLALCHEMY_DATABASE_URI
    
 

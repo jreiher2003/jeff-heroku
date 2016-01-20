@@ -10,6 +10,7 @@ app = Flask(__name__)
 import os
 app.config.from_object(os.environ['APP_SETTINGS'])
 print os.environ['APP_SETTINGS']
+print app.config['POSTS_PER_PAGE']
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager()

@@ -11,9 +11,11 @@ from app.models import User, BlogPost, bcrypt
 def index():
     return render_template('index.html')
 
-@app.route('/blog/', methods=["GET","POST"])
-def blog():
+@app.route('/blog/', methods=['GET', 'POST'])
+@app.route('/blog/<int:page>', methods=['GET', 'POST'])
+def blog(page=1):
     posts = db.session.query(BlogPost).order_by(BlogPost.id.desc()).limit(10)
+    # posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(1, app.config['POSTS_PER_PAGE'], False)
     return render_template('blog.html', posts=posts)
 
 
@@ -46,13 +48,13 @@ def editBlogPost(author_id, blog_id):
     if request.method == "GET":
         return render_template('edit-post.html', editpost=editpost, form=form, error=error)
         
-    if request.method == "POST":
-        editpost.title = request.form['title']
-        editpost.description = request.form['description']
-        db.session.add(editpost)
-        db.session.commit()
-        flash("Post successfully edited", "success")
-        return redirect(url_for('blog'))
+    # if request.method == "POST":
+    #     editpost.title = request.form['title']
+    #     editpost.description = request.form['description']
+    #     db.session.add(editpost)
+    #     db.session.commit()
+    #     flash("Post successfully edited", "success")
+    #     return redirect(url_for('blog'))
 
 
 
