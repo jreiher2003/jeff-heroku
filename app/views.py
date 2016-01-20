@@ -48,13 +48,13 @@ def editBlogPost(author_id, blog_id):
     if request.method == "GET":
         return render_template('edit-post.html', editpost=editpost, form=form, error=error)
         
-    # if request.method == "POST":
-    #     editpost.title = request.form['title']
-    #     editpost.description = request.form['description']
-    #     db.session.add(editpost)
-    #     db.session.commit()
-    #     flash("Post successfully edited", "success")
-    #     return redirect(url_for('blog'))
+    if request.method == "POST":
+        editpost.title = form.title.data
+        editpost.description = form.description.data
+        db.session.add(editpost)
+        db.session.commit()
+        flash("Post successfully edited", "success")
+        return redirect(url_for('blog'))
 
 
 
