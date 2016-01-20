@@ -13,7 +13,7 @@ def index():
 
 @app.route('/blog/', methods=["GET","POST"])
 def blog():
-    posts = db.session.query(BlogPost).order_by(BlogPost.id.desc())
+    posts = db.session.query(BlogPost).order_by(BlogPost.id.desc()).limit(10)
     return render_template('blog.html', posts=posts)
 
 
@@ -23,12 +23,19 @@ def blog_post(blog_id, blog_title):
     return render_template('blog-post.html', blogpost=blogpost)
 
 
-@app.route("/blog/<int:author_id>/newpost/")
+@app.route("/blog/<int:author_id>/newpost/", methods=["GET","POST"])
 def newBlogPost(author_id):
     error = None
     form = MessageForm(request.form)
-    blogpost = db.session.query(BlogPost).filter_by(id=author_id).one()
-    return render_template('create-post.html', blogpost=blogpost, form=form, error=error)
+    if form.validate_on_submit():
+        newpost = BlogPost(title=form.title.data, description=form.description.data,author_id=current_user.id)
+        db.session.add(newpost)
+        db.session.commit()
+        flash('your post was successful', 'success')
+        return redirect(url_for('blog'))
+
+
+    return render_template('create-post.html', form=form, error=error)
 
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/edit/")

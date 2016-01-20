@@ -2,7 +2,7 @@
 
 {% block section %}
 
-<form class="form-message" role="form" method="post" action="/blog/" }}>
+<form class="form-message" role="form" method="post" action="" }}>
 	{{ form.csrf_token }}
 
 	<div class="form-group">
@@ -13,7 +13,7 @@
 	<span class="error bg-danger">
 		{% if form.title.errors %}
 		{% for error in form.title.errors %}
-		{{ error }}
+		<div class="bg-danger">{{ error }}</div>
 		{% endfor %}
 		{% endif %}
 	</span>
@@ -26,7 +26,7 @@
 	<span class="error bg-danger">
 		{% if form.description.errors %}
 		{% for error in form.description.errors %}
-		{{ error }}
+		<div class="bg-danger">{{ error }}</div>
 		{% endfor %}
 		{% endif %}
 	</span>
