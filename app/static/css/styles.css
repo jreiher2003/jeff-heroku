@@ -140,13 +140,13 @@ figcaption {
 .sub__blog__head {
 	margin-top: 30px;
 	background-color: rgba(245,245,245,.9);
-	padding: 10px;
+	height: 30px;
+    line-height:30px;
 }
 .recent__post {
 	background: rgba(245,245,245,.9);
 	height: auto;
 	width: 300px;
-	/*padding-left: 20px;*/
 	padding-right: 20px;
 }
 ul.recent__post__list {
@@ -161,17 +161,12 @@ ul.recent__post__list li:last-of-type {
 }
 li.recent__post_hr {
 	padding: 0;
-    /*border: none;*/
     border: 1px solid rgba(220,220,220,1);
-    /*border-top: 12px double rgba(220,220,220,1);*/
     color: #333;
     text-align: center;
 }
 ul.flashes {
 	list-style: none;
-}
-ul.flashes li {
-	padding: 10px;
 }
 /*####### Login Form #############*/
 .login-form {

@@ -14,7 +14,14 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="sub__blog__head blog__head__border">
-			<a href="#">Blog</a>
+			<ul class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li class="active">Blog</li>
+				{% if current_user.is_active %}
+				<li><a href="{{ url_for('newBlogPost', author_id=current_user.id) }}">New Post</a></li>
+				<li class="text-center">Welcome, {{ current_user.name }}!</li>
+				{% endif %}
+			</ul>
 		</div>
 	</div>
 
@@ -22,16 +29,8 @@
 <br><br>
 <div class="row">
 	<div class="col-md-6 col-md-offset-1">
-
-		{% if current_user.is_active %}
-		<!-- User posts -->
-		<h2>Welcome, {{ current_user.name }}!</h2><br>
-		<h3>Add a Post!</h3><br>
-		<a href="{{ url_for('newBlogPost', author_id=current_user.id) }}">Make a new post</a>
-		{% endif %}
-
 		<h3>Posts:</h3>
-		{% for post in posts %}
+		{% for post in posts.items %}
 		<strong>Title:</strong> <h2 class="h2 text-capitalize"><a href="{{ url_for('blog_post', blog_id=post.id, blog_title=post.slug) }}">{{ post.title }}</a></h2> <br>
 		<strong>Post:</strong> <pre>{{ post.description }}</pre> 
 		<strong>Author:</strong> {{ post.author.name }} <br>
@@ -44,17 +43,19 @@
 		<div class="blog__head__border recent__post">
 			<h3 class="text-center">Recent Posts:</h3>
 			<ul class="recent__post__list">
-				{% for post in posts %}
+				{% for post in posts.items %}
 				<li class="text-capitalize"><a href="{{ url_for('blog_post', blog_id=post.id, blog_title=post.slug) }}">{{ post.title }}</a></li>
 				<br>
 				{% endfor %}
-				<li class="divider recent__post_hr"></li>
+				<li class="recent__post_hr"></li>
 				<li class="text-center"><a href="{{ url_for('index') }}">Back to Home Page</a></li>
 			</ul>
 		</div>
 	</div>
 </div><!-- end row -->
 
+{% if posts.has_prev %}<a href="{{ url_for('blog', page=posts.prev_num) }}">&lt;&lt; Newer posts</a>{% else %}&lt;&lt; Newer posts{% endif %} | 
+{% if posts.has_next %}<a href="{{ url_for('blog', page=posts.next_num) }}">Older posts &gt;&gt;</a>{% else %}Older posts &gt;&gt;{% endif %}
 
 
 
