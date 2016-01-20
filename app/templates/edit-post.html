@@ -2,10 +2,7 @@
 
 {% block section %}
 <h4>edit page</h4>
-	{{ editpost.id }}<br>
-	{{ editpost.title }}<br>
-	{{ editpost.author_id }}<br>
-	{{ editpost.description }}
+	
 
 
 <form class="form-message" role="form" method="post" action="" }}>
@@ -13,11 +10,7 @@
 
 	<div class="form-group">
 		<label for="title">Title</label>
-		
-		<!-- {{ form.title(class="form-control", placeholder="edit title") }} -->
-		<input name="title" type="text" placeholder="{{ editpost.title }}" class="form-control">
-
-		{{ editpost.title }}
+		{{ form.title(class="form-control") }}
 	</div>
 
 	<span class="error bg-danger">
@@ -30,8 +23,7 @@
 
 	<div class="form-group">
 		<label for="description">Description</label>
-		<!-- <pre> {{ form.description(class="form-control", rows="5", placeholder="edit description") }}</pre> -->
-		<pre><textarea name="description" type="text" placeholder="{{ editpost.description }}" class="form-control" rows="3"></textarea></pre>
+		<pre>{{ form.description(class="form-control", rows="5") }}</pre>
 	</div>
 
 	<span class="error bg-danger">

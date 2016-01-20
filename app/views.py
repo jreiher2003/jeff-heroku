@@ -42,7 +42,7 @@ def newBlogPost(author_id):
 def editBlogPost(author_id, blog_id):
     error = None
     editpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
-    form = MessageForm(request.form)
+    form = MessageForm(obj=editpost)
     if request.method == "GET":
         return render_template('edit-post.html', editpost=editpost, form=form, error=error)
         
