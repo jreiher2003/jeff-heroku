@@ -12,8 +12,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/blog/', methods=['GET', 'POST'])
-@app.route('/blog/<int:page>', methods=['GET', 'POST'])
-def blog(page=1):
+def blog():
     posts = db.session.query(BlogPost).order_by(BlogPost.id.desc()).limit(10)
     # posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(1, app.config['POSTS_PER_PAGE'], False)
     return render_template('blog.html', posts=posts)
@@ -58,9 +57,14 @@ def editBlogPost(author_id, blog_id):
 
 
 
-@app.route("/blog/<int:author_id>/<int:blog_id>/delete/")
+@app.route("/blog/<int:author_id>/<int:blog_id>/delete/",methods=["GET","POST"])
 def deleteBlogPost(author_id, blog_id):
     deletepost = db.session.query(BlogPost).filter_by(id=blog_id).one()
+    if request.method == "POST":
+        db.session.delete(deletepost)
+        db.session.commit()
+        flash("Post Deleted", "danger")
+        return redirect(url_for('blog'))
     return render_template('delete-post.html',deletepost=deletepost)
 
 # route for handling the login page logic

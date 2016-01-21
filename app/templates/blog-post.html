@@ -1,9 +1,10 @@
 {% extends "base1.html" %}
 
 {% block section %}
-{% if current_user.is_active %}
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
+		<div class="blog__post">
+{% if current_user.is_active %}
 <a href="{{ url_for('editBlogPost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">edit</a>
 <br>
 <a href="{{ url_for('deleteBlogPost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">delete</a>
@@ -15,7 +16,7 @@
 <strong>Post:</strong> <pre>{{ blogpost.description }}</pre><br>
 <strong>Author:</strong> {{ blogpost.author.name }}
 
-
+</div>
 </div>
 </div>
 {% endblock %}
