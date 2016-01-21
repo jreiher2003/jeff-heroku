@@ -6,16 +6,18 @@ from forms import LoginForm, MessageForm
 from app.models import User, BlogPost, bcrypt
 
 
-@app.route('/')
-@app.route('/home')
-def index():
-    return render_template('index.html')
+# @app.route('/')
+# @app.route('/home')
+# def index():
+#     return render_template('index.html')
 
 @app.route('/blog/', methods=['GET', 'POST'])
 def blog():
+    error = None
+    form = LoginForm(request.form)
     posts = db.session.query(BlogPost).order_by(BlogPost.id.desc()).limit(10)
     # posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(1, app.config['POSTS_PER_PAGE'], False)
-    return render_template('blog.html', posts=posts)
+    return render_template('blog.html', posts=posts, form=form, error=error)
 
 
 @app.route("/blog/<int:blog_id>/<path:blog_title>/")
@@ -69,6 +71,8 @@ def deleteBlogPost(author_id, blog_id):
 
 # route for handling the login page logic
 # @app.route('/', methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
+@app.route('/home', methods=["GET", "POST"])
 @app.route('/login', methods=["GET", "POST"])
 def login():
     error = None
@@ -81,11 +85,11 @@ def login():
             else:
                 login_user(user,False)
             flash("You were logged in. Go Crazy.", 'success')
-            return redirect(url_for('index'))
+            return redirect(url_for('index', form=form, error=error))
         else:
             flash("Try again", "danger")
-            return redirect(url_for('index'))
-    return render_template("login.html", form=form, error=error)	
+            return redirect(url_for('index', form=form, error=error))
+    return render_template("index.html", form=form, error=error)	
 
 
 @app.route('/logout')

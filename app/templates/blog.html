@@ -59,7 +59,7 @@
 				<br>
 				{% endfor %}
 				<li class="recent__post_hr"></li>
-				<li class="text-center"><a href="{{ url_for('index') }}">Back to Home Page</a></li>
+				<li class="text-center"><a href="{{ url_for('login', form=form, error=error) }}">Back to Home Page</a></li>
 			</ul>
 		</div>
 	</div>
