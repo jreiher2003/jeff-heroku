@@ -2,6 +2,7 @@ from app import db, bcrypt
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 from slugify import slugify
+import datetime 
 
 
 
@@ -10,6 +11,7 @@ class User(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
+    date_created  = db.Column(db.DateTime,  default=datetime.datetime.now())
     name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
@@ -44,6 +46,9 @@ class BlogPost(db.Model):
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     author_id = db.Column(db.Integer, ForeignKey('users.id'))
+    date_created  = db.Column(db.DateTime,  default=datetime.datetime.now())
+    date_modified = db.Column(db.DateTime,  default=datetime.datetime.now(),
+                                       onupdate=datetime.datetime.now())
    
 
     def __init__(self, title, description, author_id):
@@ -56,7 +61,13 @@ class BlogPost(db.Model):
     def slug(self):
         return slugify(self.title)
     
-       
+    @property 
+    def format_date(self):
+        return '{dt:%A} {dt:%B} {dt.day}, {dt.year}'.format(dt=self.date_created)
+
+    @property 
+    def format_time(self):
+        return '{dt:%I:%M %p}'.format(dt=self.date_created)
 
     def __repr__(self):
         return '<title> {}'.format(self.title)
