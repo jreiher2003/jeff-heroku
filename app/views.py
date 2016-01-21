@@ -68,20 +68,23 @@ def deleteBlogPost(author_id, blog_id):
     return render_template('delete-post.html',deletepost=deletepost)
 
 # route for handling the login page logic
+# @app.route('/', methods=["GET", "POST"])
 @app.route('/login', methods=["GET", "POST"])
 def login():
     error = None
     form = LoginForm(request.form)
-    # if request.method == "POST":
     if form.validate_on_submit():
         user = User.query.filter_by(name=request.form['username']).first()
         if user is not None and bcrypt.check_password_hash(user.password, request.form['password']):
-            login_user(user)
+            if request.form['remember_me'] == True:
+                login_user(user,True)
+            else:
+                login_user(user,False)
             flash("You were logged in. Go Crazy.", 'success')
             return redirect(url_for('index'))
         else:
             flash("Try again", "danger")
-            return redirect(url_for('login'))
+            return redirect(url_for('index'))
     return render_template("login.html", form=form, error=error)	
 
 
