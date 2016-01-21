@@ -49,15 +49,22 @@
                 </ul>
               </li>
             </ul>
-
+            {% if current_user.is_active %}
             <ul class="list-unstyled nav-call">
               <li class="pull-right hidden-xs"><a href="/logout">Logout</a></li>
-              <li class="pull-right hidden-xs"><a href="/login">Login&nbsp;|</a></li>
+              <li class="pull-right hidden-xs">{{ current_user.name }}&nbsp;|</li>
               <li class="pull-right hidden-xs"><a class="btn btn-success btn-sm" href="tel:+1-941-585-3084"><i class="fa fa-phone"></i>
                 &nbsp;&nbsp;Call Me</a></li>
               <li class="pull-right hidden-xs"><a class="btn btn-warning btn-sm" href="sms:+1-941-585-3084"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;Text Me</a></li>
             </ul>
-
+            {% else %}
+            <ul class="list-unstyled nav-call">
+              <li class="pull-right hidden-xs"><a href="/login">Login&nbsp;</a></li>
+              <li class="pull-right hidden-xs"><a class="btn btn-success btn-sm" href="tel:+1-941-585-3084"><i class="fa fa-phone"></i>
+                &nbsp;&nbsp;Call Me</a></li>
+              <li class="pull-right hidden-xs"><a class="btn btn-warning btn-sm" href="sms:+1-941-585-3084"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;Text Me</a></li>
+            </ul>
+            {% endif %}
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid nav -->
       </nav>
