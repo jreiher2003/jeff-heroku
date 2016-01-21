@@ -11,6 +11,7 @@ from app.models import User, BlogPost, bcrypt
 def index():
     return render_template('index.html')
 
+
 @app.route('/blog/', methods=['GET', 'POST'])
 def blog():
     posts = db.session.query(BlogPost).order_by(BlogPost.id.desc()).limit(10)
@@ -36,7 +37,6 @@ def new_blogpost(author_id):
         db.session.commit()
         flash('your post was successful', 'success')
         return redirect(url_for('blog'))
-
 
     return render_template('create-post.html', form=form, error=error)
 
@@ -68,6 +68,7 @@ def delete_blogpost(author_id, blog_id):
         db.session.commit()
         flash("Post Deleted", "danger")
         return redirect(url_for('blog'))
+
     return render_template('delete-post.html',deletepost=deletepost)
 
 # route for handling the login page logic
@@ -75,23 +76,26 @@ def delete_blogpost(author_id, blog_id):
 def login():
     error = None
     form = LoginForm(request.form)
-    # if request.method == "POST":
     if form.validate_on_submit():
         user = User.query.filter_by(name=request.form['username']).first()
         if user is not None and bcrypt.check_password_hash(
                                 user.password, 
                                 request.form['password']):
-            login_user(user)
+            if request.form['remember_me']:
+                login_user(user,True)
+            else:
+                login_user(user)
             flash("You were logged in. Go Crazy.", 'success')
             return redirect(url_for('index'))
         else:
             flash("Try again", "danger")
             return redirect(url_for('login'))
+            
     return render_template("login.html", form=form, error=error)	
 
 
 @app.route('/logout')
-# @login_required
+@login_required
 def logout():
     logout_user()
     session.pop('logged_in', None)
