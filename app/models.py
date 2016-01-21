@@ -67,5 +67,13 @@ class BlogPost(db.Model):
     def format_time(self):
         return '{dt:%I:%M %p}'.format(dt=self.date_created)
 
+    @property 
+    def last_modified_date(self):
+        return '{dt:%A} {dt:%B} {dt.day}, {dt.year}'.format(dt=self.date_modified)
+
+    @property 
+    def last_modified_time(self):
+        return '{dt:%I:%M %p}'.format(dt=self.date_modified)
+
     def __repr__(self):
         return '<title> {}'.format(self.title)

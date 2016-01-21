@@ -84,7 +84,7 @@ def login():
             remember_me = form.remember_me.data
             login_user(user,remember_me)
             flash("You Were Signin in. Yea!", 'success')
-            return redirect(url_for('index'))
+            return redirect(url_for('blog'))
         else:
             flash("Try again", "danger")
             return redirect(url_for('login'))
@@ -98,5 +98,5 @@ def logout():
     logout_user()
     session.pop('logged_in', None)
     flash('You were logged out.', 'warning')
-    return redirect(url_for('blog'))
+    return redirect(url_for('index'))
 
