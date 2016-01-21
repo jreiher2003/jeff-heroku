@@ -81,16 +81,14 @@ def login():
         if user is not None and bcrypt.check_password_hash(
                                 user.password, 
                                 request.form['password']):
-            if request.form['remember_me']:
-                login_user(user,True)
-            else:
-                login_user(user)
-            flash("You were logged in. Go Crazy.", 'success')
+            remember_me = form.remember_me.data
+            login_user(user,remember_me)
+            flash("You Were Signin in. Yea!", 'success')
             return redirect(url_for('index'))
         else:
             flash("Try again", "danger")
             return redirect(url_for('login'))
-            
+
     return render_template("login.html", form=form, error=error)	
 
 
