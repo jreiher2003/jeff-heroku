@@ -25,11 +25,13 @@ def blog_post(blog_id, blog_title):
 
 
 @app.route("/blog/<int:author_id>/newpost/", methods=["GET","POST"])
-def newBlogPost(author_id):
+def new_blogpost(author_id):
     error = None
     form = MessageForm(request.form)
     if form.validate_on_submit():
-        newpost = BlogPost(title=form.title.data, description=form.description.data,author_id=current_user.id)
+        newpost = BlogPost(title=form.title.data, 
+                           description=form.description.data,
+                           author_id=current_user.id)
         db.session.add(newpost)
         db.session.commit()
         flash('your post was successful', 'success')
@@ -40,7 +42,7 @@ def newBlogPost(author_id):
 
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/edit/", methods=["GET","POST"])
-def editBlogPost(author_id, blog_id):
+def edit_blogpost(author_id, blog_id):
     error = None
     editpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
     form = MessageForm(obj=editpost)
@@ -52,13 +54,14 @@ def editBlogPost(author_id, blog_id):
         flash("Post successfully edited", "success")
         return redirect(url_for('blog'))
     
-    return render_template('edit-post.html', editpost=editpost, form=form, error=error)
+    return render_template('edit-post.html', editpost=editpost, 
+                            form=form, error=error)
         
 
 
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/delete/",methods=["GET","POST"])
-def deleteBlogPost(author_id, blog_id):
+def delete_blogpost(author_id, blog_id):
     deletepost = db.session.query(BlogPost).filter_by(id=blog_id).one()
     if request.method == "POST":
         db.session.delete(deletepost)
@@ -75,7 +78,9 @@ def login():
     # if request.method == "POST":
     if form.validate_on_submit():
         user = User.query.filter_by(name=request.form['username']).first()
-        if user is not None and bcrypt.check_password_hash(user.password, request.form['password']):
+        if user is not None and bcrypt.check_password_hash(
+                                user.password, 
+                                request.form['password']):
             login_user(user)
             flash("You were logged in. Go Crazy.", 'success')
             return redirect(url_for('index'))

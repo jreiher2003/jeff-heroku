@@ -49,14 +49,12 @@ class BlogPost(db.Model):
     date_created  = db.Column(db.DateTime,  default=datetime.datetime.now())
     date_modified = db.Column(db.DateTime,  default=datetime.datetime.now(),
                                        onupdate=datetime.datetime.now())
-   
 
     def __init__(self, title, description, author_id):
         self.title = title
         self.description = description
         self.author_id = author_id
         
-
     @property 
     def slug(self):
         return slugify(self.title)
