@@ -32,12 +32,15 @@
 		<h3>Posts:</h3>
 		{% for post in posts %}
 		{% if current_user.is_active %}
+		<div class="blog-post">
 		<div class="pull-right"><a href="{{ url_for('editBlogPost', author_id=post.author_id,blog_id=post.id) }}">Edit</a>|<a href="{{ url_for('deleteBlogPost', author_id=post.author_id,blog_id=post.id) }}">Delete</a></div>
 		{% endif %}
-		<strong>Title:</strong> <h2 class="h2 text-capitalize"><a href="{{ url_for('blog_post', blog_id=post.id, blog_title=post.slug) }}">{{ post.title }}</a></h2> <br>
-		<strong>Post:</strong> <pre>{{ post.description }}</pre> 
-		<strong>Author:</strong> {{ post.author.name }} <br>
-		<br>
+		
+		<h4 class="h4 text-capitalize"><a href="{{ url_for('blog_post', blog_id=post.id, blog_title=post.slug) }}">{{ post.title }}</a></h4> <br>
+		<strong>Post:</strong> <pre>{{ post.description }}</pre>
+		</div>
+		<br><br>
+
 		{% endfor %}
 	</div> <!-- end col -->
 

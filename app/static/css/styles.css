@@ -178,6 +178,16 @@ ul.flashes {
 .blog__post {
 	margin: auto 0 265px auto;
 }
+pre, textarea {
+	border: 0;
+	font-family: monospace! important;
+	background-color: rgba(255,255,255,1);
+	font-size: 16px;
+}
+.blog-post {
+	border: 1px solid rgba(220,220,220,1);
+	padding: 10px;
+}
 @media screen and (min-width: 991px) {
 	body {
 		width: 1120px;
