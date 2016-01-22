@@ -79,6 +79,26 @@
 	</div>
 </div><!-- end row -->
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+         <div class="delete">
+			<h4>Do you want to delete: <strong> this post</strong>?</h4>
+
+
+			<form class="form-inline" method="POST" action="">
+				<input class="btn btn-danger" type="submit" value="Delete Item">
+				<a class="btn btn-default" href="{{url_for('blog')}}">Cancel</a>
+			</form>
+		</div>
+
+    </div>
+  </div>
+</div>
+
 
 
 
