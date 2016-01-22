@@ -63,9 +63,13 @@
 		<br>
 		{% endfor %}
 		<div class="row">
-			<div class="col-xs-12 col-xs-offset-2 col-sm-12 col-sm-offset-5 col-md-6 col-md-offset-4">
-		{% if posts.has_prev %}<a href="{{ url_for('blog', page=posts.prev_num) }}">&lt;&lt; Newer posts</a>{% else %}&lt;&lt; Newer posts{% endif %} | 
-		{% if posts.has_next %}<a href="{{ url_for('blog', page=posts.next_num) }}">Older posts &gt;&gt;</a>{% else %}Older posts &gt;&gt;{% endif %}<br>
+			<div class="col-xs-12 col-xs-offset-1 col-sm-12 col-sm-offset-5 col-md-6 col-md-offset-4">
+				<nav>
+					<ul class="pager">
+						{% if posts.has_prev %}<li><a href="{{ url_for('blog', page=posts.prev_num) }}">Previous</a></li>{% else %}<li>Previous</li>{% endif %}  
+						{% if posts.has_next %}<li><a href="{{ url_for('blog', page=posts.next_num) }}">Next</a></li>{% else %}<li>Next</li> {% endif %}
+					</ul>
+				</nav>
 		</div>
 		</div>
 		<br>
