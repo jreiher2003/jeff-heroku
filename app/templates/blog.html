@@ -31,7 +31,7 @@
 		
 	<div class="col-md-6 col-md-offset-1">
 		<h3>User Comments</h3>
-		{% for post in posts %}
+		{% for post in posts.items %}
 
 		<div class="blog-post">
 			<div class="row">
@@ -60,15 +60,20 @@
 			</div> <!-- end row -->
 		</div> <!-- end blog-post -->
 		<br><br>
-
 		{% endfor %}
+		<div class="row">
+			<div class="col-md-6 col-md-offset-4">
+		{% if posts.has_prev %}<a href="{{ url_for('blog', page=posts.prev_num) }}">&lt;&lt; Newer posts</a>{% else %}&lt;&lt; Newer posts{% endif %} | 
+		{% if posts.has_next %}<a href="{{ url_for('blog', page=posts.next_num) }}">Older posts &gt;&gt;</a>{% else %}Older posts &gt;&gt;{% endif %}
+		</div>
+		</div>
 	</div> <!-- end col-md-6 -->
 
 	<div class="col-md-4 col-md-offset-1">
 		<div class="blog__head__border recent__post">
 			<h3 class="text-center">Recent Posts:</h3>
 			<ul class="recent__post__list">
-				{% for post in posts %}
+				{% for post in posts.items %}
 				<li class="text-capitalize"><a href="{{ url_for('blog_post', blog_id=post.id, blog_title=post.slug) }}">{{ post.title }}</a></li>
 				<br>
 				{% endfor %}

@@ -12,9 +12,11 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/blog/', methods=['GET', 'POST'])
-def blog():
-    posts = db.session.query(BlogPost).order_by(BlogPost.id.desc()).limit(10)
+@app.route('/blog', methods=['GET', 'POST'])
+@app.route('/blog/<int:page>', methods=['GET','POST'])
+def blog(page=1):
+    posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page,3,False)
+    # posts = db.session.query(BlogPost).order_by(BlogPost.id.desc()).limit(10)
     # posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(1, app.config['POSTS_PER_PAGE'], False)
     return render_template('blog.html', posts=posts)
 
