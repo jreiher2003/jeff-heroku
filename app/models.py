@@ -1,6 +1,7 @@
 import datetime 
 
 from app import db, bcrypt
+# from base import Model
 
 from slugify import slugify
 
