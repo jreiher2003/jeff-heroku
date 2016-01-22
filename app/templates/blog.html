@@ -30,7 +30,7 @@
 <div class="row">
 		
 	<div class="col-md-6 col-md-offset-1">
-		<h3>Posts:</h3>
+		<h3>User Comments</h3>
 		{% for post in posts %}
 
 		<div class="blog-post">
@@ -38,7 +38,7 @@
 				<div class="col-md-2">
 					<img class="img-responsive thumbnail" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="75" width="75">
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-10 ">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							{% if current_user.is_active %}
@@ -53,7 +53,7 @@
 						</div>
 						<div class="panel-body">
 							<h4 class="h4 text-capitalize"><a href="{{ url_for('blog_post', blog_id=post.id, blog_title=post.slug) }}">{{ post.title }}</a></h4> 
-							<div class="panel"><pre>{{ post.description }}</pre></div>
+							<div class="panel">{{ post.description }}</div>
 						</div> <!-- end panel-body -->
 					</div> <!-- end panel-default -->
 				</div> <!-- end col-md-10 -->
