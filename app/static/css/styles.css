@@ -144,9 +144,10 @@ figcaption {
     line-height:30px;
 }
 .recent__post {
+	text-align: center;
 	background: rgba(245,245,245,.9);
 	height: auto;
-	width: 300px;
+	width: auto;
 	padding-right: 20px;
 }
 ul.recent__post__list {
@@ -241,6 +242,9 @@ pre, textarea {
 	}
 	.bottom-footer {
 		width: 50%;
+	}
+	.recent__post {
+		text-align: left;
 	}
 
 }
