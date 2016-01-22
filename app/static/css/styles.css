@@ -1,6 +1,13 @@
 html {
 	background-color: #e9eaed;
 }
+img.profile {
+	width: 75px;
+	margin-top: 8px;
+    -ms-transform: rotate(-90deg); 
+    -webkit-transform: rotate(-90deg); 
+    transform: rotate(-90deg);
+}
 .jcarousel ul li img {
 	display: block;
 	margin-left: auto;
