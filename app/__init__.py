@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask 
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.bcrypt import Bcrypt 
@@ -7,10 +9,9 @@ from flask.ext.login import LoginManager
 app = Flask(__name__)
 
 
-import os
 app.config.from_object(os.environ['APP_SETTINGS'])
-print os.environ['APP_SETTINGS']
-print app.config['POSTS_PER_PAGE']
+# print os.environ['APP_SETTINGS']
+# print app.config['POSTS_PER_PAGE']
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager()

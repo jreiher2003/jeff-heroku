@@ -1,8 +1,8 @@
-from app import db, bcrypt
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
-from slugify import slugify
 import datetime 
+
+from app import db, bcrypt
+
+from slugify import slugify
 
 
 
@@ -15,7 +15,7 @@ class User(db.Model):
     name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
-    posts = relationship("BlogPost", backref="author")
+    posts = db.relationship("BlogPost", backref="author")
 
     def __init__(self, name, email, password):
         self.name = name
@@ -45,7 +45,7 @@ class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
-    author_id = db.Column(db.Integer, ForeignKey('users.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     date_created  = db.Column(db.DateTime,  default=datetime.datetime.now())
     date_modified = db.Column(db.DateTime,  default=datetime.datetime.now(),
                                        onupdate=datetime.datetime.now())
