@@ -1,8 +1,6 @@
 *.pyc
-venv
-.DS_Store
-blog
+venv/
 *.db
 commands.txt
-#secret_key.py
 *.bat
+*.ini
